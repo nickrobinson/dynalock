@@ -51,7 +51,6 @@ export class Dynalock {
                S: resourceId
               }
             }, 
-            ReturnConsumedCapacity: "TOTAL", 
             TableName: this.tableName
            };
 
@@ -119,13 +118,14 @@ export class Dynalock {
             ConditionExpression: "#E < :expiration"
         };
 
-        return new Promise<Lease>(function(resolve, reject) {
+        return new Promise<boolean>(function(resolve, reject) {
             dynamoDb.putItem(params, function(err, data) {
                 if (err) {
                     console.log(err, err.stack)
                     reject(err);
                 } else {
-                    resolve(new Lease(resourceId, leaseExpiration.toString(), leaseHolder));
+                    console.log(data);
+                    resolve(true);
                 }    
             });
         });
