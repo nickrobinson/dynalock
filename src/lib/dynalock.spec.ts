@@ -14,6 +14,13 @@ test.beforeEach(() => {
   AWS.mock('DynamoDB', 'putItem', function (params, callback) {
     callback(null, {})
   })
+
+  AWS.mock('DynamoDB', 'scan', function (params, callback) {
+    callback(null, { Items:
+      [ { Holder: [Array], Expiration: [Array], ResourceId: [Array] } ],
+      Count: 1,
+      ScannedCount: 1 })
+  })
 })
 
 test('createTable', async t => {
