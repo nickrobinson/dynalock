@@ -1,6 +1,6 @@
 <img height="0" width="0" alt="Typescript Starter Dark" src="https://user-images.githubusercontent.com/479287/32372179-2d23ca80-c06a-11e7-828c-5b80f4a7beec.png"><img alt="typescript-starter" src="https://user-images.githubusercontent.com/479287/32372179-2d23ca80-c06a-11e7-828c-5b80f4a7beec.png">
 
-[![Build Status](https://travis-ci.org/nickrobinson/dynalock.svg?branch=master)](https://travis-ci.org/nickrobinson/dynalock.svg?branch=master)
+[![Build Status](https://travis-ci.org/nickrobinson/dynalock.svg?branch=master)](https://travis-ci.org/nickrobinson/dynalock)
 [![codecov](https://codecov.io/gh/nickrobinson/dynalock/branch/master/graph/badge.svg)](https://codecov.io/gh/nickrobinson/dynalock)
 [![NPM version](https://img.shields.io/npm/v/dynalock.svg)](https://www.npmjs.com/package/dynalock)
 [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
