@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Dynalock | typescript-starter</title>
+	<title>Dynalock | dynalock</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -879,7 +879,7 @@ img { max-width: 100%; }
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="../index.html">typescript-starter</a></strong>
+					<strong><a href="../index.html">dynalock</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -916,10 +916,16 @@ img { max-width: 100%; }
 					<a href="dynalock.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="dynalock.html#region" class="tsd-kind-icon">region</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="dynalock.html#tablename" class="tsd-kind-icon">table<wbr>Name</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="dynalock.html#availableleases" class="tsd-kind-icon">available<wbr>Leases</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="dynalock.html#capturelease" class="tsd-kind-icon">capture<wbr>Lease</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="dynalock.html#createresource" class="tsd-kind-icon">create<wbr>Resource</a>
@@ -927,7 +933,13 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="dynalock.html#createtable" class="tsd-kind-icon">create<wbr>Table</a>
 				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="dynalock.html#renewlease" class="tsd-kind-icon">renew<wbr>Lease</a>
+				</li>
 			</ul>
+		</li>
+		<li class=" tsd-kind-class">
+			<a href="lease.html" class="tsd-kind-icon">Lease</a>
 		</li>
 		<li class=" tsd-kind-variable tsd-is-not-exported">
 			<a href="../globals.html#aws" class="tsd-kind-icon">AWS</a>
@@ -960,6 +972,7 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="dynalock.html#region" class="tsd-kind-icon">region</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="dynalock.html#tablename" class="tsd-kind-icon">table<wbr>Name</a></li>
 						</ul>
 					</section>
@@ -967,8 +980,10 @@ img { max-width: 100%; }
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="dynalock.html#availableleases" class="tsd-kind-icon">available<wbr>Leases</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="dynalock.html#capturelease" class="tsd-kind-icon">capture<wbr>Lease</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="dynalock.html#createresource" class="tsd-kind-icon">create<wbr>Resource</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="dynalock.html#createtable" class="tsd-kind-icon">create<wbr>Table</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="dynalock.html#renewlease" class="tsd-kind-icon">renew<wbr>Lease</a></li>
 						</ul>
 					</section>
 				</div>
@@ -980,19 +995,22 @@ img { max-width: 100%; }
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Dynalock<span class="tsd-signature-symbol">(</span>tableName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="dynalock.html" class="tsd-signature-type">Dynalock</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Dynalock<span class="tsd-signature-symbol">(</span>tableName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, region<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="dynalock.html" class="tsd-signature-type">Dynalock</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/100577f/src/lib/dynalock.ts#L4">lib/dynalock.ts:4</a></li>
+								<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.ts#L8">lib/dynalock.ts:8</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>tableName: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> region: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;us-east-1&quot;</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="dynalock.html" class="tsd-signature-type">Dynalock</a></h4>
@@ -1003,12 +1021,22 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="region" class="tsd-anchor"></a>
+				<h3>region</h3>
+				<div class="tsd-signature tsd-kind-icon">region<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.ts#L8">lib/dynalock.ts:8</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="tablename" class="tsd-anchor"></a>
 				<h3>table<wbr>Name</h3>
 				<div class="tsd-signature tsd-kind-icon">table<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/100577f/src/lib/dynalock.ts#L4">lib/dynalock.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.ts#L7">lib/dynalock.ts:7</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1019,16 +1047,39 @@ img { max-width: 100%; }
 				<a name="availableleases" class="tsd-anchor"></a>
 				<h3>available<wbr>Leases</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">available<wbr>Leases<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></li>
+					<li class="tsd-signature tsd-kind-icon">available<wbr>Leases<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="lease.html" class="tsd-signature-type">Lease</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/100577f/src/lib/dynalock.ts#L63">lib/dynalock.ts:63</a></li>
+								<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.ts#L67">lib/dynalock.ts:67</a></li>
 							</ul>
 						</aside>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="lease.html" class="tsd-signature-type">Lease</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="capturelease" class="tsd-anchor"></a>
+				<h3>capture<wbr>Lease</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">capture<wbr>Lease<span class="tsd-signature-symbol">(</span>resourceId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.ts#L96">lib/dynalock.ts:96</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>resourceId: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -1042,7 +1093,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/100577f/src/lib/dynalock.ts#L42">lib/dynalock.ts:42</a></li>
+								<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.ts#L47">lib/dynalock.ts:47</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1065,10 +1116,33 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/100577f/src/lib/dynalock.ts#L10">lib/dynalock.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.ts#L15">lib/dynalock.ts:15</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="renewlease" class="tsd-anchor"></a>
+				<h3>renew<wbr>Lease</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">renew<wbr>Lease<span class="tsd-signature-symbol">(</span>resourceId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="lease.html" class="tsd-signature-type">Lease</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.ts#L136">lib/dynalock.ts:136</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>resourceId: <span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="lease.html" class="tsd-signature-type">Lease</a><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>

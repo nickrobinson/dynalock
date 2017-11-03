@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>typescript-starter | typescript-starter</title>
+	<title>dynalock | dynalock</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -879,7 +879,7 @@ img { max-width: 100%; }
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">typescript-starter</a></strong>
+					<strong><a href="index.html">dynalock</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -912,6 +912,9 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-class">
 			<a href="classes/dynalock.html" class="tsd-kind-icon">Dynalock</a>
 		</li>
+		<li class=" tsd-kind-class">
+			<a href="classes/lease.html" class="tsd-kind-icon">Lease</a>
+		</li>
 		<li class=" tsd-kind-variable tsd-is-not-exported">
 			<a href="globals.html#aws" class="tsd-kind-icon">AWS</a>
 		</li>
@@ -923,30 +926,15 @@ img { max-width: 100%; }
 <div class="container container-main">
 	<div class="content-wrap">
 		<div class="tsd-panel tsd-typography">
-			<p><img height="0" width="0" alt="Typescript Starter Dark" src="https://cloud.githubusercontent.com/assets/904007/23006840/4e2b0c6c-f3d2-11e6-8f32-11384ee0cc4b.png"><img alt="typescript-starter" src="https://cloud.githubusercontent.com/assets/904007/23006836/4c67a3b8-f3d2-11e6-8784-12f0a34284d1.png"></p>
-			<p><a href="https://travis-ci.org/bitjson/typescript-starter"><img src="https://travis-ci.org/bitjson/typescript-starter.svg?branch=master" alt="Build Status"></a>
-				<a href="https://codecov.io/gh/bitjson/typescript-starter"><img src="https://img.shields.io/codecov/c/github/bitjson/typescript-starter.svg" alt="Codecov"></a>
+			<p><img height="0" width="0" alt="Typescript Starter Dark" src="https://user-images.githubusercontent.com/479287/32372179-2d23ca80-c06a-11e7-828c-5b80f4a7beec.png"><img alt="typescript-starter" src="https://user-images.githubusercontent.com/479287/32372179-2d23ca80-c06a-11e7-828c-5b80f4a7beec.png"></p>
+			<p><a href="https://travis-ci.org/nickrobinson/dynalock.svg?branch=master"><img src="https://travis-ci.org/nickrobinson/dynalock.svg?branch=master" alt="Build Status"></a>
+				<a href="https://codecov.io/gh/nickrobinson/dynalock"><img src="https://codecov.io/gh/nickrobinson/dynalock/branch/master/graph/badge.svg" alt="codecov"></a>
 				<a href="https://www.npmjs.com/package/typescript-starter"><img src="https://img.shields.io/npm/v/typescript-starter.svg" alt="NPM version"></a>
 				<a href="https://github.com/conventional-changelog/standard-version"><img src="https://img.shields.io/badge/release-standard%20version-brightgreen.svg" alt="Standard Version"></a>
-				<a href="https://david-dm.org/bitjson/typescript-starter"><img src="https://david-dm.org/bitjson/typescript-starter/status.svg" alt="dependencies Status"></a>
-			<a href="https://david-dm.org/bitjson/typescript-starter?type=dev"><img src="https://david-dm.org/bitjson/typescript-starter/dev-status.svg" alt="devDependencies Status"></a></p>
-			<h1 id="typescript-starter">typescript-starter</h1>
-			<p>A <a href="https://www.typescriptlang.org/">typescript</a> starter for building javascript libraries and projects:</p>
-			<ul>
-				<li>Write <strong>standard, future javascript</strong> – with stable es7 features – today (<a href="https://github.com/tc39/proposals">stage 3</a> or <a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md">finished</a> features)</li>
-				<li><a href="https://basarat.gitbooks.io/typescript/content/docs/why-typescript.html">Optionally use typescript</a> to improve tooling, linting, and documentation generation</li>
-				<li>Export as a <a href="http://jsmodules.io/">javascript module</a>, making your work <strong>fully tree-shakable</strong> for consumers using <a href="https://github.com/rollup/rollup/wiki/pkg.module">es6 imports</a> (like <a href="http://rollupjs.org/">Rollup</a> or <a href="https://webpack.js.org/">Webpack 2</a>)</li>
-				<li>Export type declarations to improve your downstream development experience</li>
-				<li>Backwards compatibility for Node.js-style (CommonJS) imports</li>
-				<li>Both <a href="config/tsconfig.strict.json">strict</a> and <a href="config/tsconfig.flexible.json">flexible</a> typescript configurations available</li>
-			</ul>
-			<p>So we can have nice things:</p>
-			<ul>
-				<li>Generate API documentation (HTML or JSON) <a href="https://blog.cloudflare.com/generating-documentation-for-typescript-projects/">without a mess of JSDoc tags</a> to maintain</li>
-				<li>Collocated, atomic, concurrent unit tests with <a href="https://github.com/avajs/ava">AVA</a></li>
-				<li>Source-mapped code coverage reports with <a href="https://github.com/istanbuljs/nyc">nyc</a></li>
-				<li>Configurable code coverage testing (for continuous integration)</li>
-			</ul>
+				<a href="https://david-dm.org/nickrobinson/dynalock"><img src="https://david-dm.org/nickrobinson/dynalock/status.svg" alt="dependencies Status"></a>
+			<a href="https://david-dm.org/nickrobinson/dynalock?type=dev"><img src="https://david-dm.org/nickrobinson/dynalock/dev-status.svg" alt="devDependencies Status"></a></p>
+			<h1 id="dynalock">dynalock</h1>
+			<p>A <a href="https://www.typescriptlang.org/">typescript</a> based library for performing <a href="https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html">distributed locking</a> using DynamoDB.</p>
 			<h2 id="get-started">Get started</h2>
 			<p>Before you start, consider using an <a href="https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support">editor with good typescript support</a>.</p>
 			<p><a href="https://code.visualstudio.com/">VS Code</a> (below) is a popular option. Editors with typescript support can provide helpful autocomplete, inline documentation, and code refactoring features.</p>
@@ -1046,8 +1034,8 @@ yarn changelog -- --sign
     Reset, build, test, publish docs, <span class="hljs-keyword">and</span> <span class="hljs-built_in">prepare</span> release (<span class="hljs-keyword">a</span> <span class="hljs-literal">one</span>-step publish <span class="hljs-built_in">process</span>)
 </code></pre><h2 id="notes">Notes</h2>
 			<h3 id="multiple-builds-main-module-and-browser-">Multiple builds (<code>main</code>, <code>module</code>, and <code>browser</code>)</h3>
-			<p>The <code>src</code> of <code>typescript-starter</code> is compiled into three separate builds: <code>main</code>, <code>module</code>, and <code>browser</code>. The <code>main</code> build is <a href="https://github.com/bitjson/typescript-starter/blob/master/tsconfig.json#L8">configured to use the CommonJS module system</a>, while the <code>module</code> build <a href="https://github.com/bitjson/typescript-starter/blob/master/config/tsconfig.module.json">uses the new ES6 module system</a>. The browser build contains two bundles, an ES6 module (the preferred export) and a CommonJS bundle (primarily used for testing).</p>
-			<p>Because Node.js does not yet support the ES6 module system, Node.js projects which depend on typescript-starter will follow the <code>main</code> field in <a href="https://github.com/bitjson/typescript-starter/blob/master/package.json"><code>package.json</code></a>. Tools which support the new system (like <a href="https://github.com/rollup/rollup">Rollup</a>) will follow the <code>module</code> field, giving them the ability to statically analyze typescript-starter. When building for the browser, newer tools follow the <code>browser</code> field, which will resolve to the browser build&#39;s ES6 module.</p>
+			<p>The <code>src</code> of <code>typescript-starter</code> is compiled into three separate builds: <code>main</code>, <code>module</code>, and <code>browser</code>. The <code>main</code> build is <a href="https://github.com/nickrobinson/dynalock/blob/master/tsconfig.json#L8">configured to use the CommonJS module system</a>, while the <code>module</code> build <a href="https://github.com/nickrobinson/dynalock/blob/master/config/tsconfig.module.json">uses the new ES6 module system</a>. The browser build contains two bundles, an ES6 module (the preferred export) and a CommonJS bundle (primarily used for testing).</p>
+			<p>Because Node.js does not yet support the ES6 module system, Node.js projects which depend on typescript-starter will follow the <code>main</code> field in <a href="https://github.com/nickrobinson/dynalock/blob/master/package.json"><code>package.json</code></a>. Tools which support the new system (like <a href="https://github.com/rollup/rollup">Rollup</a>) will follow the <code>module</code> field, giving them the ability to statically analyze typescript-starter. When building for the browser, newer tools follow the <code>browser</code> field, which will resolve to the browser build&#39;s ES6 module.</p>
 			<h3 id="testing">Testing</h3>
 			<p>By convention, tests in <code>typescript-starter</code> are co-located with the files they test. The project is configured to allow tests to be written in Typescript and your library to be imported as if it were being used by another project. (E.g. <code>import { double, power } from &#39;typescript-starter&#39;</code>.) This makes tests both intuitive to write and easy to read as another form of documentation.</p>
 			<p>Note, tests are compiled and performed on the final builds in the standard Node.js runtime (rather than an alternative like <a href="https://github.com/TypeStrong/ts-node">ts-node</a>) to ensure tests pass in that environment. If you are using <a href="https://github.com/TypeStrong/ts-node/issues/104">ts-node in production</a>, you can modify this project to skip test compilation.</p>
@@ -1077,6 +1065,7 @@ yarn changelog -- --sign
 						<h3>Classes</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-class"><a href="classes/dynalock.html" class="tsd-kind-icon">Dynalock</a></li>
+							<li class="tsd-kind-class"><a href="classes/lease.html" class="tsd-kind-icon">Lease</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section tsd-is-not-exported">
@@ -1097,18 +1086,18 @@ yarn changelog -- --sign
 				<div class="tsd-signature tsd-kind-icon">AWS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&#x27;aws-sdk-mock&#x27;)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/100577f/src/lib/dynalock.ts#L1">lib/dynalock.ts:1</a></li>
-						<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/100577f/src/lib/dynalock.spec.ts#L6">lib/dynalock.spec.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.ts#L4">lib/dynalock.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.spec.ts#L7">lib/dynalock.spec.ts:7</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
 				<a name="client" class="tsd-anchor"></a>
 				<h3>client</h3>
-				<div class="tsd-signature tsd-kind-icon">client<span class="tsd-signature-symbol">:</span> <a href="classes/dynalock.html" class="tsd-signature-type">Dynalock</a><span class="tsd-signature-symbol"> =&nbsp;new Dynalock(&quot;fake&quot;)</span></div>
+				<div class="tsd-signature tsd-kind-icon">client<span class="tsd-signature-symbol">:</span> <a href="classes/dynalock.html" class="tsd-signature-type">Dynalock</a><span class="tsd-signature-symbol"> =&nbsp;new Dynalock(&#x27;fake&#x27;)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/100577f/src/lib/dynalock.spec.ts#L4">lib/dynalock.spec.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/nickrobinson/dynalock/blob/8833430/src/lib/dynalock.spec.ts#L5">lib/dynalock.spec.ts:5</a></li>
 					</ul>
 				</aside>
 			</section>
