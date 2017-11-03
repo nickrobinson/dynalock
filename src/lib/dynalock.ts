@@ -84,7 +84,7 @@ export class Dynalock {
         } else {
           let leases: Lease[] = []
           data['Items'].forEach(element => {
-            leases.push(new Lease(element['ResourceId'], element['Expiration'], element['Holder']))
+            leases.push(new Lease(element['ResourceId']['S'], element['Expiration']['N'], element['Holder']['S']))
           })
           resolve(leases)
         }
@@ -116,16 +116,17 @@ export class Dynalock {
       ExpressionAttributeValues: {
         ':expiration': {'N': Math.floor(Date.now() / 1000).toString()}
       },
-      ConditionExpression: '#E < :expiration'
+      ConditionExpression: '#E < :expiration',
+      ReturnValues: 'ALL_OLD'
     }
 
-    return new Promise<boolean>(function (resolve, reject) {
+    return new Promise<Lease>(function (resolve, reject) {
       dynamoDb.putItem(params, function (err, data) {
         if (err) {
           reject(err)
         } else {
-          console.log(data)
-          resolve(true)
+          let retVal = data['Attributes']
+          resolve(new Lease(retVal['ResourceId']['S'], leaseExpiration.toString(), leaseHolder))
         }
       })
     })

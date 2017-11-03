@@ -6,7 +6,7 @@
     "start": "node test.js"
   },
   "dependencies": {
-    "dynalock": "^0.0.2"
+    "dynalock": "^0.0.3"
   },
   "private": true
 }

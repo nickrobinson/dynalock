@@ -11,10 +11,6 @@ test.beforeEach(() => {
     callback(null, 'successfully created table')
   })
 
-  AWS.mock('DynamoDB', 'putItem', function (params, callback) {
-    callback(null, {})
-  })
-
   AWS.mock('DynamoDB', 'scan', function (params, callback) {
     callback(null, { Items:
       [ { Holder: [Array], Expiration: [Array], ResourceId: [Array] } ],
@@ -28,6 +24,11 @@ test.beforeEach(() => {
       Expiration: { N: '1509712036' },
       ResourceId: { S: 'E16479F0' } } })
   })
+
+  AWS.mock('DynamoDB', 'putItem', function (params, callback) {
+    callback(null, {})
+  })
+
 })
 
 test('createTable', async t => {
@@ -41,10 +42,25 @@ test('availableLeases', async t => {
 })
 
 test('capture lease', async t => {
-  t.true(await client.captureLease('E16479F0'))
+  AWS.restore()
+  AWS.mock('DynamoDB', 'putItem', function (params, callback) {
+    callback(null, { Attributes:
+    { Holder: { S: 'jonsnow.github.com' },
+      Expiration: { N: '1509720445' },
+      ResourceId: { S: 'E16479F0' } } })
+  })
+
+  let retVal = await client.captureLease('E16479F0')
+  t.true(retVal.resourceId === 'E16479F0')
+
 })
 
 test('create resource', async t => {
+  AWS.restore()
+  AWS.mock('DynamoDB', 'putItem', function (params, callback) {
+    callback(null, {})
+  })
+
   let retVal = await client.createResource('foo')
   t.true(Object.keys(retVal).length === 0)
 })

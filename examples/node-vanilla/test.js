@@ -8,8 +8,41 @@ var assert = require('assert');
 
 var locker = new starter.Dynalock('fake');
 
-locker.captureLease("E16479F0").then(function(value) {
-    console.log(value);
-}).catch(function(e) {
-    console.log("Could not capture lock");
-});
+// locker.createResource("E16479F0").then(function(value) {
+//     console.log(value);
+// }).catch(function(e) {
+//     console.log(e);
+// });
+
+function lockHandler() {
+    locker.availableLeases().then(function(value) {
+        if (value.length == 0) {
+            console.log("No Leases Available");
+            setTimeout(lockHandler, 30000);
+        } else {
+            var lease = value[0];
+
+            locker.captureLease(lease.resourceId['S']).then(function(value) {
+                console.log("Captured lease for " + lease.resourceId['S']);
+            
+                function renew() {
+                    locker.renewLease(lease.resourceId['S']).then(function(value) {
+                        console.log("Renewed lease");
+                    }).catch(function(e) {
+                        console.log("Unable to renew lease");
+                    })
+                }
+                
+                setInterval(renew, 20000);
+            }).catch(function(e) {
+                console.log(e);
+                console.log("Could not capture lock");
+            });
+        }
+        console.log(value);
+    }).catch(function(e) {
+        console.log(e);
+    })
+}
+
+lockHandler();
