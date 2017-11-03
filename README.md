@@ -1,7 +1,7 @@
 <img height="0" width="0" alt="Typescript Starter Dark" src="https://cloud.githubusercontent.com/assets/904007/23006840/4e2b0c6c-f3d2-11e6-8f32-11384ee0cc4b.png"><img alt="typescript-starter" src="https://cloud.githubusercontent.com/assets/904007/23006836/4c67a3b8-f3d2-11e6-8784-12f0a34284d1.png">
 
-[![Build Status](https://travis-ci.org/bitjson/typescript-starter.svg?branch=master)](https://travis-ci.org/bitjson/typescript-starter)
-[![Codecov](https://img.shields.io/codecov/c/github/bitjson/typescript-starter.svg)](https://codecov.io/gh/bitjson/typescript-starter)
+[![Build Status](https://travis-ci.org/nickrobinson/dynalock)](https://travis-ci.org/nickrobinson/dynalock)
+[![codecov](https://codecov.io/gh/nickrobinson/dynalock/branch/master/graph/badge.svg)](https://codecov.io/gh/nickrobinson/dynalock)
 [![NPM version](https://img.shields.io/npm/v/typescript-starter.svg)](https://www.npmjs.com/package/typescript-starter)
 [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
 [![dependencies Status](https://david-dm.org/bitjson/typescript-starter/status.svg)](https://david-dm.org/bitjson/typescript-starter)
