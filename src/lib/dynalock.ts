@@ -132,4 +132,42 @@ export class Dynalock {
       })
     })
   }
+
+  renewLease (resourceId: string) {
+    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: this.region})
+    const leaseExpiration = (Math.floor(Date.now() / 1000) + 30)
+    const leaseHolder = os.hostname()
+
+    let params = {
+      Key: {
+        'ResourceId': {
+          S: resourceId
+        }
+      },
+      UpdateExpression: 'SET #E = :new_expiration',
+      TableName: this.tableName,
+      ExpressionAttributeNames: {
+        '#E': 'Expiration',
+        '#H': 'Holder'
+      },
+      ExpressionAttributeValues: {
+        ':expiration': {'N': Math.floor(Date.now() / 1000).toString()},
+        ':new_expiration': { 'N': leaseExpiration.toString() },
+        ':holder': {'S': leaseHolder}
+      },
+      ConditionExpression: '(#E > :expiration) AND (#H = :holder)',
+      ReturnValues: 'ALL_NEW'
+    }
+
+    return new Promise<Lease>(function (resolve, reject) {
+      dynamoDb.updateItem(params, function (err, data) {
+        if (err) {
+          reject(err)
+        } else {
+          let retVal = data['Attributes']
+          resolve(new Lease(retVal['ResourceId']['S'], retVal['Expiration']['N'], retVal['Holder']['S']))
+        }
+      })
+    })
+  }
 }

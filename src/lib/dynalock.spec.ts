@@ -21,6 +21,13 @@ test.beforeEach(() => {
       Count: 1,
       ScannedCount: 1 })
   })
+
+  AWS.mock('DynamoDB', 'updateItem', function (params, callback) {
+    callback(null, { Attributes:
+    { Holder: { S: 'foo.github.com' },
+      Expiration: { N: '1509712036' },
+      ResourceId: { S: 'E16479F0' } } })
+  })
 })
 
 test('createTable', async t => {
@@ -40,4 +47,11 @@ test('capture lease', async t => {
 test('create resource', async t => {
   let retVal = await client.createResource('foo')
   t.true(Object.keys(retVal).length === 0)
+})
+
+test('renew lease', async t => {
+  let retVal = await client.renewLease('E16479F0')
+  t.true(retVal.expiration === '1509712036')
+  t.true(retVal.holder === 'foo.github.com')
+  t.true(retVal.resourceId === 'E16479F0')
 })
