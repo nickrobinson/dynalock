@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/nickrobinson/dynalock.svg?branch=master)](https://travis-ci.org/nickrobinson/dynalock.svg?branch=master)
 [![codecov](https://codecov.io/gh/nickrobinson/dynalock/branch/master/graph/badge.svg)](https://codecov.io/gh/nickrobinson/dynalock)
-[![NPM version](https://img.shields.io/npm/v/typescript-starter.svg)](https://www.npmjs.com/package/typescript-starter)
+[![NPM version](https://img.shields.io/npm/v/dynalock.svg)](https://www.npmjs.com/package/dynalock)
 [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
 [![dependencies Status](https://david-dm.org/nickrobinson/dynalock/status.svg)](https://david-dm.org/nickrobinson/dynalock)
 [![devDependencies Status](https://david-dm.org/nickrobinson/dynalock/dev-status.svg)](https://david-dm.org/nickrobinson/dynalock?type=dev)
