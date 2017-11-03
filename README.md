@@ -4,8 +4,8 @@
 [![codecov](https://codecov.io/gh/nickrobinson/dynalock/branch/master/graph/badge.svg)](https://codecov.io/gh/nickrobinson/dynalock)
 [![NPM version](https://img.shields.io/npm/v/typescript-starter.svg)](https://www.npmjs.com/package/typescript-starter)
 [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
-[![dependencies Status](https://david-dm.org/bitjson/typescript-starter/status.svg)](https://david-dm.org/bitjson/typescript-starter)
-[![devDependencies Status](https://david-dm.org/bitjson/typescript-starter/dev-status.svg)](https://david-dm.org/bitjson/typescript-starter?type=dev)
+[![dependencies Status](https://david-dm.org/nickrobinson/dynalock/status.svg)](https://david-dm.org/nickrobinson/dynalock)
+[![devDependencies Status](https://david-dm.org/nickrobinson/dynalock/dev-status.svg)](https://david-dm.org/nickrobinson/dynalock?type=dev)
 
 # dynalock
 
@@ -163,9 +163,9 @@ yarn run info
 
 ### Multiple builds (`main`, `module`, and `browser`)
 
-The `src` of `typescript-starter` is compiled into three separate builds: `main`, `module`, and `browser`. The `main` build is [configured to use the CommonJS module system](https://github.com/bitjson/typescript-starter/blob/master/tsconfig.json#L8), while the `module` build [uses the new ES6 module system](https://github.com/bitjson/typescript-starter/blob/master/config/tsconfig.module.json). The browser build contains two bundles, an ES6 module (the preferred export) and a CommonJS bundle (primarily used for testing).
+The `src` of `typescript-starter` is compiled into three separate builds: `main`, `module`, and `browser`. The `main` build is [configured to use the CommonJS module system](https://github.com/nickrobinson/dynalock/blob/master/tsconfig.json#L8), while the `module` build [uses the new ES6 module system](https://github.com/nickrobinson/dynalock/blob/master/config/tsconfig.module.json). The browser build contains two bundles, an ES6 module (the preferred export) and a CommonJS bundle (primarily used for testing).
 
-Because Node.js does not yet support the ES6 module system, Node.js projects which depend on typescript-starter will follow the `main` field in [`package.json`](https://github.com/bitjson/typescript-starter/blob/master/package.json). Tools which support the new system (like [Rollup](https://github.com/rollup/rollup)) will follow the `module` field, giving them the ability to statically analyze typescript-starter. When building for the browser, newer tools follow the `browser` field, which will resolve to the browser build's ES6 module.
+Because Node.js does not yet support the ES6 module system, Node.js projects which depend on typescript-starter will follow the `main` field in [`package.json`](https://github.com/nickrobinson/dynalock/blob/master/package.json). Tools which support the new system (like [Rollup](https://github.com/rollup/rollup)) will follow the `module` field, giving them the ability to statically analyze typescript-starter. When building for the browser, newer tools follow the `browser` field, which will resolve to the browser build's ES6 module.
 
 ### Testing
 
