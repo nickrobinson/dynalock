@@ -6,10 +6,10 @@ var starter = require('dynalock');
 // now we can use the library
 var assert = require('assert');
 
-assert(starter.double(6) === 12);
-console.log("✔ starter.double(6) === 12");
+var locker = new starter.Dynalock('fake');
 
-assert(starter.power(3,4) === 81);
-console.log("✔ starter.power(3,4) === 81");
-
-starter.asyncABC().then( abc => console.log("✔ asyncABC returned:", abc) );
+locker.captureLease("E16479F0").then(function(value) {
+    console.log(value);
+}).catch(function(e) {
+    console.log("Could not capture lock");
+});

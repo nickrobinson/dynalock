@@ -58,7 +58,7 @@ export class Dynalock {
 
     return new Promise(function (resolve, reject) {
       dynamoDb.putItem(params, function (err, data) {
-        if (err) console.log(err, err.stack)
+        if (err) reject(err)
         else resolve(data)
       })
     })
@@ -80,7 +80,6 @@ export class Dynalock {
     return new Promise<Lease[]>(function (resolve, reject) {
       dynamoDb.scan(params, function (err, data) {
         if (err) {
-          console.log(err, err.stack)
           reject(err)
         } else {
           let leases: Lease[] = []
@@ -123,7 +122,6 @@ export class Dynalock {
     return new Promise<boolean>(function (resolve, reject) {
       dynamoDb.putItem(params, function (err, data) {
         if (err) {
-          console.log(err, err.stack)
           reject(err)
         } else {
           console.log(data)
