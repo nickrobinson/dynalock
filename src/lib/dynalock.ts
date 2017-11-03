@@ -1,133 +1,133 @@
-import { Lease } from "./lease";
-import os = require('os');
+import { Lease } from './lease'
+import * as os from 'os'
 
-const AWS = require('aws-sdk');
+const AWS = require('aws-sdk')
 
 export class Dynalock {
-    tableName: string;
+  tableName: string
 
-    constructor(tableName: string) {
-        this.tableName = tableName;
+  constructor (tableName: string) {
+    this.tableName = tableName
+  }
+
+  createTable () {
+    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'})
+    console.log('Creating ' + this.tableName)
+
+    let params = {
+      AttributeDefinitions: [
+        {
+          AttributeName: 'ResourceId',
+          AttributeType: 'S'
+        }
+      ],
+      KeySchema: [
+        {
+          AttributeName: 'ResourceId',
+          KeyType: 'HASH'
+        }
+      ],
+      ProvisionedThroughput: {
+        ReadCapacityUnits: 5,
+        WriteCapacityUnits: 5
+      },
+      TableName: this.tableName
     }
 
-    createTable() {
-        const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'});
-        console.log("Creating " + this.tableName);
+    return new Promise(function (resolve, reject) {
+      dynamoDb.createTable(params, function ( err, data ) {
+        if (err) reject(err)
+        else resolve(data)
+      })
+    })
+  }
 
-        var params = {
-            AttributeDefinitions: [
-               {
-              AttributeName: "ResourceId", 
-              AttributeType: "S"
-             }
-            ], 
-            KeySchema: [
-               {
-              AttributeName: "ResourceId", 
-              KeyType: "HASH"
-             }
-            ], 
-            ProvisionedThroughput: {
-             ReadCapacityUnits: 5, 
-             WriteCapacityUnits: 5
-            }, 
-            TableName: this.tableName
-           };
+  createResource (resourceId: string) {
+    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'})
 
-        return new Promise(function(resolve, reject) {
-              dynamoDb.createTable(params, function(err, data) {
-              if (err) console.log(err, err.stack); // an error occurred
-              else     resolve(data); 
-            });
-        });
+    let params = {
+      Item: {
+        'ResourceId': {
+          S: resourceId
+        }
+      },
+      TableName: this.tableName
     }
 
-    createResource(resourceId: string) {
-        const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'});
+    return new Promise(function (resolve, reject) {
+      dynamoDb.putItem(params, function (err, data) {
+        if (err) console.log(err, err.stack)
+        else resolve(data)
+      })
+    })
+  }
 
-        var params = {
-            Item: {
-             "ResourceId": {
-               S: resourceId
-              }
-            }, 
-            TableName: this.tableName
-           };
+  availableLeases () {
+    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'})
 
-           return new Promise(function(resolve, reject) {
-                dynamoDb.putItem(params, function(err, data) {
-                    if (err) console.log(err, err.stack);
-                    else     resolve(data);
-                });
-            });
+    let params = {
+      ExpressionAttributeValues: {
+        ':e': {
+          N: Math.floor(Date.now() / 1000).toString()
+        }
+      },
+      FilterExpression: 'Expiration < :e',
+      TableName: this.tableName
     }
 
-    availableLeases() {
-        const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'});
+    return new Promise<Lease[]>(function (resolve, reject) {
+      dynamoDb.scan(params, function (err, data) {
+        if (err) {
+          console.log(err, err.stack)
+          reject(err)
+        } else {
+          let leases: Lease[] = []
+          data['Items'].forEach(element => {
+            leases.push(new Lease(element['ResourceId'], element['Expiration'], element['Holder']))
+          })
+          resolve(leases)
+        }
+      })
+    })
+  }
 
-        var params = {
-            ExpressionAttributeValues: {
-             ":e": {
-               N: Math.floor(Date.now() / 1000).toString()
-              }
-            }, 
-            FilterExpression: "Expiration < :e", 
-            TableName: this.tableName
-        };
+  captureLease (resourceId: string) {
+    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'})
+    const leaseExpiration = (Math.floor(Date.now() / 1000) + 30)
+    const leaseHolder = os.hostname()
 
-        return new Promise<Lease[]>(function(resolve, reject) {
-            dynamoDb.scan(params, function(err, data) {
-                if (err) {
-                    console.log(err, err.stack);
-                    reject(err);
-                } else {
-                    var leases: Lease[] = [];
-                    data["Items"].forEach(element => {
-                        leases.push(new Lease(element["ResourceId"], element["Expiration"], element["Holder"]));
-                    });
-                    resolve(leases);
-                };
-            });
-        });
+    let params = {
+      Item: {
+        'ResourceId': {
+          S: resourceId
+        },
+        'Expiration': {
+          N: leaseExpiration.toString()
+        },
+        'Holder': {
+          S: leaseHolder
+        }
+      },
+      TableName: this.tableName,
+      ExpressionAttributeNames: {
+        '#E': 'Expiration'
+      },
+      ExpressionAttributeValues: {
+        ':expiration': {'N': Math.floor(Date.now() / 1000).toString()}
+      },
+      ConditionExpression: '#E < :expiration'
     }
 
-    captureLease(resourceId: string) {
-        const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'});
-        const leaseExpiration = (Math.floor(Date.now() / 1000) + 30);
-        const leaseHolder = os.hostname();
-
-        var params = {
-            Item: {
-                "ResourceId": {
-                    S: resourceId
-                },
-                "Expiration": {
-                    N: leaseExpiration.toString()
-                },
-                "Holder": {
-                    S: leaseHolder
-                }
-            },  
-            TableName: this.tableName,
-            ExpressionAttributeNames: {
-                "#E":"Expiration"
-            },
-            ExpressionAttributeValues: {
-                ":expiration": {"N": Math.floor(Date.now() / 1000).toString()}
-            },
-            ConditionExpression: "#E < :expiration"
-        };
-
-        return new Promise<boolean>(function(resolve, reject) {
-            dynamoDb.putItem(params, function(err, data) {
-                if (err) {
-                    console.log(err, err.stack)
-                    reject(err);
-                } else {
-                    console.log(data);
-                    resolve(true);
-                }    
-            });
-        });
-    }
+    return new Promise<boolean>(function (resolve, reject) {
+      dynamoDb.putItem(params, function (err, data) {
+        if (err) {
+          console.log(err, err.stack)
+          reject(err)
+        } else {
+          console.log(data)
+          resolve(true)
+        }
+      })
+    })
+  }
 }
