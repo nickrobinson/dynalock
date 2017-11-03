@@ -5,13 +5,15 @@ const AWS = require('aws-sdk')
 
 export class Dynalock {
   tableName: string
+  region: string
 
-  constructor (tableName: string) {
+  constructor (tableName: string, region: string = 'us-east-1') {
     this.tableName = tableName
+    this.region = region
   }
 
   createTable () {
-    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'})
+    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: this.region})
     console.log('Creating ' + this.tableName)
 
     let params = {
@@ -43,7 +45,7 @@ export class Dynalock {
   }
 
   createResource (resourceId: string) {
-    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'})
+    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: this.region})
 
     let params = {
       Item: {
@@ -63,7 +65,7 @@ export class Dynalock {
   }
 
   availableLeases () {
-    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'})
+    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: this.region})
 
     let params = {
       ExpressionAttributeValues: {
@@ -92,7 +94,7 @@ export class Dynalock {
   }
 
   captureLease (resourceId: string) {
-    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: 'us-east-1'})
+    const dynamoDb = new AWS.DynamoDB({apiVersion: '2012-08-10', region: this.region})
     const leaseExpiration = (Math.floor(Date.now() / 1000) + 30)
     const leaseHolder = os.hostname()
 

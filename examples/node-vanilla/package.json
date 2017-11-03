@@ -6,7 +6,7 @@
     "start": "node test.js"
   },
   "dependencies": {
-    "typescript-starter": "^1.2.1"
+    "dynalock": "^0.0.1"
   },
   "private": true
 }

@@ -1,6 +1,6 @@
 import { test } from 'ava'
-import { Dynalock } from 'typescript-starter'
-import { Lease } from 'typescript-starter'
+import { Dynalock } from 'dynalock'
+import { Lease } from 'dynalock'
 
 let client = new Dynalock('fake')
 
