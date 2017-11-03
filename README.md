@@ -7,22 +7,9 @@
 [![dependencies Status](https://david-dm.org/bitjson/typescript-starter/status.svg)](https://david-dm.org/bitjson/typescript-starter)
 [![devDependencies Status](https://david-dm.org/bitjson/typescript-starter/dev-status.svg)](https://david-dm.org/bitjson/typescript-starter?type=dev)
 
-# typescript-starter
+# dynalock
 
-A [typescript](https://www.typescriptlang.org/) starter for building javascript libraries and projects:
-
-* Write **standard, future javascript** – with stable es7 features – today ([stage 3](https://github.com/tc39/proposals) or [finished](https://github.com/tc39/proposals/blob/master/finished-proposals.md) features)
-* [Optionally use typescript](https://basarat.gitbooks.io/typescript/content/docs/why-typescript.html) to improve tooling, linting, and documentation generation
-* Export as a [javascript module](http://jsmodules.io/), making your work **fully tree-shakable** for consumers using [es6 imports](https://github.com/rollup/rollup/wiki/pkg.module) (like [Rollup](http://rollupjs.org/) or [Webpack 2](https://webpack.js.org/))
-* Export type declarations to improve your downstream development experience
-* Backwards compatibility for Node.js-style (CommonJS) imports
-* Both [strict](config/tsconfig.strict.json) and [flexible](config/tsconfig.flexible.json) typescript configurations available
-
-So we can have nice things:
-* Generate API documentation (HTML or JSON) [without a mess of JSDoc tags](https://blog.cloudflare.com/generating-documentation-for-typescript-projects/) to maintain
-* Collocated, atomic, concurrent unit tests with [AVA](https://github.com/avajs/ava)
-* Source-mapped code coverage reports with [nyc](https://github.com/istanbuljs/nyc)
-* Configurable code coverage testing (for continuous integration)
+A [typescript](https://www.typescriptlang.org/) based library for performing [distributed locking](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html) using DynamoDB.
 
 ## Get started
 
